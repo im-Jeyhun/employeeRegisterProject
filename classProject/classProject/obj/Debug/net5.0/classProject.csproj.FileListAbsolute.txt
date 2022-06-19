@@ -1,0 +1,16 @@
+D:\Proqraming\c#\Projectss\classProject\classProject\classProject\bin\Debug\net5.0\classProject.exe
+D:\Proqraming\c#\Projectss\classProject\classProject\classProject\bin\Debug\net5.0\classProject.deps.json
+D:\Proqraming\c#\Projectss\classProject\classProject\classProject\bin\Debug\net5.0\classProject.runtimeconfig.json
+D:\Proqraming\c#\Projectss\classProject\classProject\classProject\bin\Debug\net5.0\classProject.runtimeconfig.dev.json
+D:\Proqraming\c#\Projectss\classProject\classProject\classProject\bin\Debug\net5.0\classProject.dll
+D:\Proqraming\c#\Projectss\classProject\classProject\classProject\bin\Debug\net5.0\classProject.pdb
+D:\Proqraming\c#\Projectss\classProject\classProject\classProject\obj\Debug\net5.0\classProject.csproj.AssemblyReference.cache
+D:\Proqraming\c#\Projectss\classProject\classProject\classProject\obj\Debug\net5.0\classProject.GeneratedMSBuildEditorConfig.editorconfig
+D:\Proqraming\c#\Projectss\classProject\classProject\classProject\obj\Debug\net5.0\classProject.AssemblyInfoInputs.cache
+D:\Proqraming\c#\Projectss\classProject\classProject\classProject\obj\Debug\net5.0\classProject.AssemblyInfo.cs
+D:\Proqraming\c#\Projectss\classProject\classProject\classProject\obj\Debug\net5.0\classProject.csproj.CoreCompileInputs.cache
+D:\Proqraming\c#\Projectss\classProject\classProject\classProject\obj\Debug\net5.0\classProject.dll
+D:\Proqraming\c#\Projectss\classProject\classProject\classProject\obj\Debug\net5.0\refint\classProject.dll
+D:\Proqraming\c#\Projectss\classProject\classProject\classProject\obj\Debug\net5.0\classProject.pdb
+D:\Proqraming\c#\Projectss\classProject\classProject\classProject\obj\Debug\net5.0\classProject.genruntimeconfig.cache
+D:\Proqraming\c#\Projectss\classProject\classProject\classProject\obj\Debug\net5.0\ref\classProject.dll
