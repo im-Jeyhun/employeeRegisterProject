@@ -8,45 +8,39 @@ namespace classProject
         {
             while (true)
             {
-                Console.WriteLine("Notes : (Name's first char must be start with upper letter, letter's must be upper than 2, less than 20, Name must be consist of letters)");
+                editinfo:
                 Console.Write("Insert Name : ");
                 string targetName = Console.ReadLine();
-                Console.WriteLine("Notes : (Surname's first char must be start with upper letter, letter's must be upper than 2, less than 35, Surname must be consist of letters)");
                 Console.Write("Insert Surname : ");
                 string targetSurname = Console.ReadLine();
-                Console.WriteLine("Notes : (Father's first char must be start with upper letter, letter's must be upper than 2, less than 35, Father must be consist of letters)");
                 Console.Write("Insert Father Name : ");
                 string targetFatherName = Console.ReadLine();
-                Console.WriteLine("Notes : (Age must be between 18 and 65)");
                 Console.Write("Insert Age : ");
                 int targetAge = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine("Notes : (Finn must be 7 char , in Finn number must be upper letters and figures)");
                 Console.Write("Insert Finn number : ");
                 string targetFin = Console.ReadLine();
-                Console.WriteLine("Notes : (Telephone number must be 13 fiqures and Tel number must me start with +994)");
                 Console.Write("Insert Telephone number : +");
                 string targetNumber = Console.ReadLine();
-                Console.WriteLine("Notes : (Position consist of HR, Audit , Engineer)");
                 Console.Write("Insert Position : ");
                 string targetPosition = Console.ReadLine();
-                Console.WriteLine("Notes : (Salary's amount must be between 1500 and 5000)");
                 Console.Write("Insert Salary : ");
                 int targetSalary = Convert.ToInt32(Console.ReadLine());
 
-
                 Employee hrEmp = new Employee(targetName, targetSurname, targetFatherName, targetAge, targetFin, targetNumber, targetName, targetSalary);
-                Console.WriteLine($"Name is {hrEmp.NameChechk(targetName)}");
-                Console.WriteLine($"Surname is {hrEmp.SurnameChechk(targetSurname)}");
-                Console.WriteLine($"Father name is {hrEmp.FatherNameChechk(targetFatherName)}");
-                Console.WriteLine($"Age is {hrEmp.AgeChechker(targetAge)}");
-                Console.WriteLine($"Finn is {hrEmp.MainFinnChechk(targetFin)}");
-                Console.WriteLine($"Telephone number is {hrEmp.FirstNumberChechk(targetNumber)}");
-                Console.WriteLine($"Position is {hrEmp.PositionChechk(targetPosition)}");
-                Console.WriteLine($"Salary is {hrEmp.SalaryChechk(targetSalary)}");
-                Console.WriteLine("Whould you like to get Employee info ? press yes or no");
+                Console.WriteLine(hrEmp.IsNameValid(targetName));
+                Console.WriteLine(hrEmp.IsSurnameValid(targetSurname));
+                Console.WriteLine( hrEmp.IsFatherNameValid(targetFatherName));
+                Console.WriteLine( hrEmp.IsAgeValid(targetAge));
+                Console.WriteLine (hrEmp.IsFinnValid(targetFin));
+                Console.WriteLine( hrEmp.IsNumberValid(targetNumber));
+                Console.WriteLine( hrEmp.IsPositionValid(targetPosition));
+                Console.WriteLine(hrEmp.IsSalaryValid(targetSalary));
+                Console.WriteLine("DATA APLLIED.....");
+
+                Console.WriteLine("Whould you like to get Employee info or edit info ? press getinfo or editinfo");
                 string targetGetInfo = Console.ReadLine();
 
-                if (targetGetInfo == "yes")
+                if (targetGetInfo == "getinfo")
                 {
                     Console.WriteLine($"Employe's name is {targetName}");
                     Console.WriteLine($"Employe's surname is {targetSurname}");
@@ -57,9 +51,9 @@ namespace classProject
                     Console.WriteLine($"Employe's position is {targetPosition}");
                     Console.WriteLine($"Employe's salary is {targetSalary}");
                 }
-                else
+                else if (targetGetInfo == "editinfo")
                 {
-                    Console.WriteLine("Bye-Bye");
+                    goto editinfo;
                 }
             }
         }
@@ -88,76 +82,83 @@ namespace classProject
             _empSalary = empSalary;
         }
 
-        public bool NameChechk(string empName)
+        public bool IsNameValid(string empName)
         {
-            return FirstNameMethod(empName) && SecondNameMethod(empName) && ThirdNameMethod(empName);
+            bool isNameValid = true;
+            if (!IsNameFirstCharUpper(empName))
+            {
+                Console.WriteLine("Adin ilk herfi boyuk olmalidir");
+                isNameValid = false;
+            }
+            if (!IsNameLengthValid(empName))
+            {
+                Console.WriteLine("Ad minimum 2 max ise 20 herfli olmalidir.");
+                isNameValid = false;
+            }
+            if (!IsNameConsistLetters(empName))
+            {
+                Console.WriteLine("Ad sadece herlferle yazilmalidir...");
+                isNameValid = false;
+            }
+
+            return isNameValid;
+
 
         }
-        public bool SurnameChechk(string empSurName)
+        public bool IsSurnameValid(string empSurName)
         {
-            return FirstNameMethod(empSurName) && SecondSNameMethod(empSurName) && ThirdNameMethod(empSurName);
-        }
-        public bool FatherNameChechk(string empFatherName)
-        {
-            return FirstNameMethod(empFatherName) && SecondNameMethod(empFatherName) && ThirdNameMethod(empFatherName);
-        }
-        public bool MainFinnChechk(string empFin)
-        {
-            return FirstFinCheck(empFin) && SecondFinCheck(empFin);
-        }
-        public bool MainNumberChechk(string empTelNumber)
-        {
-            return FirstNumberChechk(empTelNumber);
-        }
-        public bool FirstNameMethod(string empName)
-        {
-            char[] alphabetLower = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+            bool isSurNameValid = true;
+            if (!IsNameFirstCharUpper(empSurName))
+            {
+                Console.WriteLine("Soyadin ilk herfi boyuk olmalidir");
+                isSurNameValid = false;
+            }
+            if (!IsSurnameLengthValid(empSurName))
+            {
+                Console.WriteLine("Soyad minimum 2 max ise 35 herfli olmalidir.");
+                isSurNameValid = false;
+            }
+            if (!IsNameConsistLetters(empSurName))
+            {
+                Console.WriteLine("Soyad sadece herlferle yazilmalidir...");
+                isSurNameValid = false;
+            }
 
-            for (int i = 0; i < alphabetLower.Length; i++)
-            {
-                if (empName[0] == alphabetLower[i])
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-        public bool SecondNameMethod(string empName)
-        {
-            for (int i = 0; i < empName.Length; i++)
-            {
-                if (empName.Length <= 2 || empName.Length >= 20)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-        public bool ThirdNameMethod(string empName)
-        {
-            char[] alphabet = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+            return isSurNameValid;
 
-            for (int i = 0; i < alphabet.Length; i++)
-            {
-                if (empName[0] == alphabet[i])
-                {
-                    return true;
-                }
-            }
-            return false;
         }
-        public bool SecondSNameMethod(string empName)
+        public bool IsFatherNameValid(string empFatherName)
         {
-            for (int i = 0; i < empName.Length; i++)
+            bool isFatherNameValid = true;
+            if (!IsNameFirstCharUpper(empFatherName))
             {
-                if (empName.Length <= 2 || empName.Length >= 35)
-                {
-                    return false;
-                }
+                Console.WriteLine("Ata adinin ilk herfi boyuk olmalidir");
+                isFatherNameValid = false;
             }
-            return true;
+            if (!IsNameLengthValid(empFatherName))
+            {
+                Console.WriteLine("Ata adi minimum 2 max ise 20 herfli olmalidir.");
+                isFatherNameValid = false;
+            }
+            if (!IsNameConsistLetters(empFatherName))
+            {
+                Console.WriteLine("Ata adi sadece herlferle yazilmalidir...");
+                isFatherNameValid = false;
+            }
+
+            return isFatherNameValid;
         }
-        public bool AgeChechker(int empAge)
+        public bool IsAgeValid(int empAge)
+        {
+            bool isAgeValid = true;
+            if (!IsAgeNumberValid(empAge))
+            {
+                Console.WriteLine("Yas araligi 18 - 65 arasi olmalidir...");
+                isAgeValid = false;
+            }
+            return isAgeValid;
+        }
+        public bool IsAgeNumberValid(int empAge)
         {
             if (empAge <= 18 || empAge >= 65)
             {
@@ -166,18 +167,33 @@ namespace classProject
             return true;
 
         }
-        public bool FirstFinCheck(string empFin)
+        public bool IsFinnValid(string empFin)
+        {
+            bool isFinnValid = true;
+            if (!IsFinnLengthValid(empFin))
+            {
+                Console.WriteLine("Finn code 7 charachter olmalidir");
+                isFinnValid = false;
+            }
+            if (!IsFinnTextValid(empFin))
+            {
+                Console.WriteLine("Finn code sadece reqemlerden ve herflerden olmalidir.");
+                isFinnValid = false;
+            }
+            return isFinnValid;
+        }
+        public bool IsFinnLengthValid(string empFin)
         {
             for (int i = 0; i < empFin.Length; i++)
             {
-                if (empFin.Length < 7 || _empName.Length > 7)
+                if (empFin.Length < 7 || empFin.Length > 7)
                 {
                     return false;
                 }
             }
             return true;
         }
-        public bool SecondFinCheck(string empFin)
+        public bool IsFinnTextValid(string empFin)
         {
             char[] alphabets = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
 
@@ -193,7 +209,17 @@ namespace classProject
             }
             return false;
         }
-        public bool FirstNumberChechk(string empTelNumber)
+        public bool IsNumberValid(string empTelNumber)
+        {
+            bool isNumberValid = true;
+            if (!IsNumberLengthValid(empTelNumber))
+            {
+                Console.WriteLine("Telefon nomresi 13 reqemli olmalidir");
+                isNumberValid = false;
+            }
+            return isNumberValid;
+        }
+        public bool IsNumberLengthValid(string empTelNumber)
         {
             foreach (char elem in empTelNumber)
             {
@@ -204,7 +230,18 @@ namespace classProject
             }
             return true;
         }
-        public bool PositionChechk(string empPosition)
+
+        public bool IsPositionValid(string empPosition)
+        {
+            bool isPositionValid = true;
+            if (!IsPositionTextValid(empPosition))
+            {
+                Console.WriteLine("Pozisiyalar sadece HR, Audit , Engineer olmalidir");
+                isPositionValid = false;
+            }
+            return isPositionValid;
+        }
+        public bool IsPositionTextValid(string empPosition)
         {
             if (empPosition != "HR" && empPosition != "Audit" && empPosition != "Engineer")
             {
@@ -212,7 +249,17 @@ namespace classProject
             }
             return true;
         }
-        public bool SalaryChechk(int empSalary)
+        public bool IsSalaryValid(int empSalary)
+        {
+            bool isSalaryValid = true;
+            if (!IsSalaryAmountValid(empSalary))
+            {
+                Console.WriteLine("Maas 1500 ile 5000 arasinda olmalidi");
+                isSalaryValid = false;
+            }
+            return isSalaryValid;
+        }
+        public bool IsSalaryAmountValid(int empSalary)
         {
             if (empSalary < 1500 || empSalary > 5000)
             {
@@ -220,5 +267,58 @@ namespace classProject
             }
             return true;
         }
+
+        public bool IsNameFirstCharUpper(string empName)
+        {
+            char[] alphabetLower = { 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+
+            for (int i = 0; i < alphabetLower.Length; i++)
+            {
+                if (empName[0] == alphabetLower[i])
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public bool IsNameLengthValid(string empName)
+        {
+            for (int i = 0; i < empName.Length; i++)
+            {
+                if (empName.Length <= 2 || empName.Length >= 20)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+        public bool IsNameConsistLetters(string empName)
+        {
+            char[] alphabet = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+
+            for (int i = 0; i < alphabet.Length; i++)
+            {
+                if (empName[0] == alphabet[i])
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public bool IsSurnameLengthValid(string empName)
+        {
+            for (int i = 0; i < empName.Length; i++)
+            {
+                if (empName.Length <= 2 || empName.Length >= 35)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
     }
+
 }
+   
+
